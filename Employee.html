@@ -1,0 +1,90 @@
+<!doctype html>
+<html>
+<head>
+<title>Employee</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+
+<style>
+
+div.abc{
+background-color:#5f797b;
+}
+div.mno {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 100px;
+    margin:50px;
+    font-size:130%;
+}
+.button {
+    background-color:#5f797b ;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    transition-duration: 0.4s;
+}
+
+.button:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+</style>
+
+</head>
+<body>
+<div class="abc">
+<center><img src=" C:\Users\hp\Desktop\employed\emp.jpg" alt="Employee"></center>
+</div>
+
+
+<div class="mno"><b>
+<form action="/action_page.php" target="_self" method="post">
+<fieldset>
+<legend style="font-size:180%;"><b>Employee Registration:</b></legend><br><br><center>
+Name:<br>            
+<input type="text" name="name" required size="50"><br><br>
+Date Of Birth:<br>
+<input type="date" name="DOB" size="50"><br><br>
+E-Mail:<br>            
+<input type="email" name="email" required size="50"><br><br>
+Contact:<br>           
+<input type="text" name="contact" required size="50"><br><br>
+Address:<br>           
+<input type="text" name="address" required size="50"><br><br>
+Qualification:<br>     
+<input type="text" name="qualification" required size="50"><br><br>
+Experience:<br>        
+<input type="number" name="experience" required size="50"><br><br>
+Skills: <br>           
+<input type="text" name="skills" required size="50"><br><br>
+Project Links:<br>     
+<input type="url" name="plinks" size="50"><br><br>
+Work-Type: <br>        
+<input type="text" name="wtype"required size="50"><br><br>
+Location:<br>          
+<input type="text" name="location" size="50"><br><br>
+Salary (Minimum):<br>  
+<input type="text" name="salary" size="50"><br><br>
+Resume:           
+<input type="file" name="resume" size="50"><br><br>
+
+<input type="submit" onclick="alert('Submitted Successfully!')" value="Submit">
+<input type="reset"><br><br></center>
+</fieldset>
+</form></b>
+</div>
+
+<hr>
+<center><h1>If Already Registered, Then You Can See The Jobs.</h1></center>
+<hr>
+
+<div><br><br><center>
+<a href="C:\Users\hp\Desktop\employed\job_vacancies.html"><button class="button">See Jobs</button></a>
+</center><br><br><br></div>
+</body>
+</html>

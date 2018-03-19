@@ -1,0 +1,564 @@
+<!doctype html>
+<html>
+<head>
+<title>Trojans</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+* {
+    box-sizing: border-box;
+}
+
+
+
+.heading {
+    font-size: 25px;
+    margin-right: 25px;
+}
+
+.fa {
+    font-size: 25px;
+}
+
+.checked {
+    color: orange;
+}
+
+/* Three column layout */
+.side {
+    float: left;
+    width: 15%;
+    margin-top:10px;
+}
+
+.middle {
+    margin-top:10px;
+    float: left;
+    width: 70%;
+}
+
+/* Place text to the right */
+.right {
+    text-align: right;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* The bar container */
+.bar-container {
+    width: 100%;
+    background-color: #f1f1f1;
+    text-align: center;
+    color: white;
+}
+
+/* Individual bars */
+.bar-5 {width: 60%; height: 18px; background-color: #4CAF50;}
+.bar-4 {width: 30%; height: 18px; background-color: #2196F3;}
+.bar-3 {width: 10%; height: 18px; background-color: #00bcd4;}
+.bar-2 {width: 4%; height: 18px; background-color: #ff9800;}
+.bar-1 {width: 15%; height: 18px; background-color: #f44336;}
+
+
+</style>
+
+
+<!------------------------------------------------------------------------------------------------->
+<style>
+ul.menu {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #c0c0c0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+li.item {
+    float: left;
+    border-right: 1px solid black;
+}
+
+li.item a {
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 120%;
+}
+
+li.item a:hover {
+    background-color: #4EE2EC;
+}
+a.top{
+
+</style>
+
+<!------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+
+<style>
+* {box-sizing: border-box;}
+body {font-family: Verdana, sans-serif;}
+.mySlides {display: none;}
+img {vertical-align: middle;}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 1400px;
+  position: relative;
+  margin: auto;
+}
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .text {font-size: 11px}
+}
+</style>
+
+<!-------------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+<style>
+* {box-sizing: border-box;}
+.img-comp-container {
+
+  position: absolute; 
+  height: 200px; 
+}
+.img-comp-img {
+  position: absolute;
+  width: auto;
+  height: auto;
+  overflow:hidden;
+}
+.img-comp-img img {
+  display:block;
+  vertical-align:middle;
+}
+.img-comp-slider {
+  position: absolute;
+  z-index:9;
+  cursor: ew-resize;
+  width: 40px;
+  height: 40px;
+  background-color: #2196F3;
+  opacity: 0.7;
+  border-radius: 50%;
+}
+</style>
+<script>
+function initComparisons() {
+  var x, i;
+  x = document.getElementsByClassName("img-comp-overlay");
+  for (i = 0; i < x.length; i++) {
+    compareImages(x[i]);
+  }
+  function compareImages(img) {
+    var slider, img, clicked = 0, w, h;
+    w = img.offsetWidth;
+    h = img.offsetHeight;
+    img.style.width = (w / 2) + "px";
+    slider = document.createElement("DIV");
+    slider.setAttribute("class", "img-comp-slider");
+    img.parentElement.insertBefore(slider, img);
+    slider.style.top = (h / 2) - (slider.offsetHeight / 2) + "px";
+    slider.style.left = (w / 2) - (slider.offsetWidth / 2) + "px";
+    slider.addEventListener("mousedown", slideReady);
+    window.addEventListener("mouseup", slideFinish);
+    slider.addEventListener("touchstart", slideReady);
+    window.addEventListener("touchstop", slideFinish);
+    function slideReady(e) {
+      e.preventDefault();
+      clicked = 1;
+      window.addEventListener("mousemove", slideMove);
+      window.addEventListener("touchmove", slideMove);
+    }
+    function slideFinish() {
+      clicked = 0;
+    }
+    function slideMove(e) {
+      var pos;
+      if (clicked == 0) return false;
+      pos = getCursorPos(e)
+      if (pos < 0) pos = 0;
+      if (pos > w) pos = w;
+      slide(pos);
+    }
+    function getCursorPos(e) {
+      var a, x = 0;
+      e = e || window.event;
+      a = img.getBoundingClientRect();
+      x = e.pageX - a.left;
+      x = x - window.pageXOffset;
+      return x;
+    }
+    function slide(x) {
+      img.style.width = x + "px";
+      slider.style.left = img.offsetWidth - (slider.offsetWidth / 2) + "px";
+    }
+  }
+}
+</script>
+
+<!----------------------------------------------------------------------------------------------------------------------------------------------------------->
+</head>
+<body>
+
+<div><b>
+<ul class="menu">
+  <li class=item> <a href="#home">Home</a></li>
+  <li class=item> <a href="#about">About</a></li>
+  <li class=item> <a href="#employee">Employee</a></li>
+  <li class=item> <a href="#employer">Employer</a></li>
+  <li class=item> <a href="#feedback">Feedback</a></li>
+  <li class=item> <a href="#contact">Contact</a></li>
+</ul></b>
+</div>
+
+<div id=home style="background-color:#000204; height:405px;">
+<img src="C:\Users\hp\Desktop\employed\1.jpg" alt="Unemployment is no more..!!" height="405px" width="640px" style="float:left">
+<br><br><br><br>
+<p style="font-family:Times new roman; font-size:250%; text-align:center; color:#eff7ff;">
+<i>In india, we know thousands of skilled people who are just unemployed. And also many employers need employees for their basic needs 
+but they are unable to find appropriate employee for their task.</i>
+</p>
+</div>
+
+
+
+
+
+<div>
+
+
+
+<div class="slideshow-container">
+
+<div class="mySlides fade">
+  <div class="numbertext">1 / 3</div>
+  <img src="C:\Users\hp\Desktop\employed\6.jpg" style="width:100%; height:250px;">
+  
+</div>
+
+<div class="mySlides fade">
+  <div class="numbertext">2 / 3</div>
+  <img src="C:\Users\hp\Desktop\employed\employment-law.jpg" style="width:100%; height:250px;">
+ 
+</div>
+
+<div class="mySlides fade">
+  <div class="numbertext">3 / 3</div>
+  <img src=" C:\Users\hp\Desktop\employed\YouAreHired-768x432.png" style="width:100%; height:250px;">
+  
+</div>
+
+</div>
+<br>
+
+<div style="text-align:center">
+  <span class="dot"></span> 
+  <span class="dot"></span> 
+  <span class="dot"></span> 
+</div>
+
+<script>
+var slideIndex = 0;
+showSlides();
+
+function showSlides() {
+    var i;
+    var slides = document.getElementsByClassName("mySlides");
+    var dots = document.getElementsByClassName("dot");
+    for (i = 0; i < slides.length; i++) {
+       slides[i].style.display = "none";  
+    }
+    slideIndex++;
+    if (slideIndex > slides.length) {slideIndex = 1}    
+    for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[slideIndex-1].style.display = "block";  
+    dots[slideIndex-1].className += " active";
+    setTimeout(showSlides, 2000); // Change image every 2 seconds
+}
+</script>
+
+</div>
+
+
+
+
+
+
+<div id=about style="background-color:rgb(16, 81, 132); height:205px;">
+<center><img src="C:\Users\hp\Desktop\employed\aboutus.jpg" alt="About us"></center>
+</div>
+
+<div class="about" style="padding:70px;">
+<div class="img-comp-container">
+  <div class="img-comp-img">
+    <img src="C:\Users\hp\Desktop\employed\outcome.jpg" width="700" height="300">
+  </div>
+  <div class="img-comp-img img-comp-overlay">
+    <img src="C:\Users\hp\Desktop\employed\Employability-to-Employment.png" width="700" height="300">
+  </div>
+</div>
+<script>
+initComparisons();
+</script>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<p style="font-family:Times new roman ; font-size:250%; text-align:center;"><i>We will be the mediocre between Employees and Employers.
+<br>We remove the gap between Employee and Employer, and match the Employee needs with the Employer expectation.</i></p>
+</div>
+<hr>
+
+
+
+
+
+<div id=employee style="background-color:#000030;">
+<center><img src="C:\Users\hp\Desktop\employed\Emp reg.jpg" alt="Employee" height="300px"></center>
+</div>
+
+<div style="font-size:220%; text-align:center; background-color:#DCDCDC;">
+<br><br>Are you Unemployed?
+<br>Do you need a Job either Part time or Full time?<br>
+Even if you are Skilled or Unskilled, then Register below and become Employed.<br><br>
+
+<a href="file:///C:/Users/hp/Desktop/employed/Employee.html" target="_blank" style=" background-color:#000030;
+    border:5px outset;
+    color: white;
+    padding: 15px 32px;
+    text-align:center;
+    text-decoration:none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;">
+REGISTER (EMPLOYEE)
+</a>
+<a href="C:\Users\hp\Desktop\employed\Training Form\Training.html" target="_blank" style=" background-color:#000030;
+    border:5px outset;
+    color: white;
+    padding: 15px 32px;
+    text-align:center;
+    text-decoration:none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;">
+Training (Skill/Unskill)
+</a>
+
+
+<br><br><br>
+</div>
+<hr>
+
+<div id=employer>
+<center><img src="C:\Users\hp\Desktop\employed\employer_registration_banner.jpg" alt="Employer" width="1330px"></center>
+</div>
+
+<div style="font-size:220%; text-align:center;">
+<br><br>
+Do you have Job vacancies?<br>
+Are you finding a well suited Employee for you work?<br>
+Then waiting for what? Register below and Post the Job details.<br><br> 
+<a href="file:///C:/Users/hp/Desktop/employed/Employer.html" target="_blank" style=" background-color:rgb(16, 81, 132);
+    border:5px outset;
+    color: white;
+    padding: 15px 32px;
+    text-align:center;
+    text-decoration:none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;">
+REGISTER (EMPLOYER)
+</a>
+<a href="C:\Users\hp\Desktop\employed\LoginRegistrationForm\Test.html" target="_blank" style=" background-color:rgb(16, 81, 132);
+    border:5px outset;
+    color: white;
+    padding: 15px 32px;
+    text-align:center;
+    text-decoration:none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;">
+Recruitment  Test
+</a>
+<br><br><br>
+</div>
+
+<hr>
+<div id=feedback>
+<center><img src="C:\Users\hp\Desktop\employed\feedback (3).jpg" alt="Feedback"></center>
+</div>
+
+
+<div style="padding:20px;"><br>
+<hr>
+<span class="heading">User Rating</span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star"></span>
+<p>4.1 average based on 254 reviews.</p>
+<hr style="border:3px solid #f1f1f1">
+
+<div class="row">
+  <div class="side">
+    <div>5 star</div>
+  </div>
+  <div class="middle">
+    <div class="bar-container">
+      <div class="bar-5"></div>
+    </div>
+  </div>
+  <div class="side right">
+    <div>150</div>
+  </div>
+  <div class="side">
+    <div>4 star</div>
+  </div>
+  <div class="middle">
+    <div class="bar-container">
+      <div class="bar-4"></div>
+    </div>
+  </div>
+  <div class="side right">
+    <div>63</div>
+  </div>
+  <div class="side">
+    <div>3 star</div>
+  </div>
+  <div class="middle">
+    <div class="bar-container">
+      <div class="bar-3"></div>
+    </div>
+  </div>
+  <div class="side right">
+    <div>15</div>
+  </div>
+  <div class="side">
+    <div>2 star</div>
+  </div>
+  <div class="middle">
+    <div class="bar-container">
+      <div class="bar-2"></div>
+    </div>
+  </div>
+  <div class="side right">
+    <div>6</div>
+  </div>
+  <div class="side">
+    <div>1 star</div>
+  </div>
+  <div class="middle">
+    <div class="bar-container">
+      <div class="bar-1"></div>
+    </div>
+  </div>
+  <div class="side right">
+    <div>20</div>
+  </div>
+</div>
+
+
+<br>
+</div>
+<hr>
+
+<div id=contact>
+<center><img src="C:\Users\hp\Desktop\employed\contact-us.jpg" alt="Contact Us" width="1330px"></center>
+</div>
+
+<div>
+<center><h1>CONTACT US</h1>
+<hr>
+<pre style="font-size:200%;" >
+<del><b><i>UN</del>EMPLOYMENT Pvt. Ltd.</b></i>
+<i>JECRC Campus 
+Shri Ram ki Nangal, via Sitapura RIICO
+Tonk Road, Jaipur-302 022</i>
+<b>E-mail:</b> <i>rsinghal.abc@gmail.com</i>
+<b>Contact No.:</b> <i>9461080982</i>
+<hr>
+<i>                    Copyright 2017. <del>UN</del>EMPLOYMENT. All Rights Reserved.</i>            <a href="#" style="background-color:#DCDCDC;
+    border:2px solid black;
+    padding: 15px 32px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    color:black;
+    cursor: pointer;">TOP</a>
+</center></pre>
+</div>
+
+</body>
+</html>
